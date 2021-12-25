@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
         s_port = argv[2];
 
     if (argc <= 3)
-        c_port = "12345";
+        c_port = NULL;
     else
         c_port = argv[3];
 
@@ -116,7 +116,7 @@ int main(int argc, char* argv[]) {
         putchar('\n');
 
         if (buf[0] == 'H') {
-            printf("Sending a response to %s:%d\n", ip, ntohs(port));
+            printf("Sending a response\n");
             if (sendto(sockfd, res, strlen(res), 0, (struct sockaddr*)&addr, addr_len) == -1) {
                 perror("sendto");
                 return 1;
