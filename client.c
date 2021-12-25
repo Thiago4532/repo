@@ -95,7 +95,7 @@ int main(int argc, char* argv[]) {
 
     printf("Sending to %s:%d\n", ip, port);
 
-    msg = "Hello peer!\n";
+    msg = "Hello peer!";
     for (int i = 0; i < 50; i++) {
         if (sendto(sockfd, msg, strlen(msg), 0, (struct sockaddr*)&addr, addr_len) == -1) {
             perror("sendto");
@@ -111,7 +111,7 @@ int main(int argc, char* argv[]) {
         printf("got packet from %s:%d\n", ip, ntohs(port));
         for (int i = 0; i < size; i++)
             putchar(buf[i]);
-
+        putchar('\n');
     }
 
     return 0;

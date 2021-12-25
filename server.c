@@ -83,6 +83,7 @@ int main(int argc, char* argv[]) {
         printf("got packet from %s:%d\n", ip, ntohs(port));
         for (int i = 0; i < size; i++)
             putchar(buf[i]);
+        putchar('\n');
 
         peer[i].host = addr.sin_addr.s_addr;
         peer[i].port = addr.sin_port;
