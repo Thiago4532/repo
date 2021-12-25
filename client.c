@@ -96,6 +96,8 @@ int main(int argc, char* argv[]) {
     printf("Sending to %s:%d\n", ip, port);
 
     msg = "Hello peer!";
+    char* res = "Received a message!";
+
     for (int i = 0; i < 15; i++) {
         if (sendto(sockfd, msg, strlen(msg), 0, (struct sockaddr*)&addr, addr_len) == -1) {
             perror("sendto");
@@ -112,6 +114,12 @@ int main(int argc, char* argv[]) {
         for (int i = 0; i < size; i++)
             putchar(buf[i]);
         putchar('\n');
+        if (buf[0] == 'H') {
+            if (sendto(sockfd, res, strlen(res), 0, (struct sockaddr*)&addr, addr_len) == -1) {
+                perror("sendto");
+                return 1;
+            }
+        }
     }
 
     return 0;
