@@ -114,15 +114,6 @@ int main(int argc, char* argv[]) {
         for (int i = 0; i < size; i++)
             putchar(buf[i]);
         putchar('\n');
-
-        if (buf[0] == 'H') {
-            printf("Sending a response\n");
-            if (sendto(sockfd, res, strlen(res), 0, (struct sockaddr*)&addr, addr_len) == -1) {
-                perror("sendto");
-                return 1;
-            }
-            sleep(1);
-        }
     }
 
     return 0;
