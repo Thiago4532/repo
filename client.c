@@ -93,16 +93,16 @@ int main(int argc, char* argv[]) {
     char* ip = inet_ntoa(addr.sin_addr);
     int port = ntohs(peer.port);
 
-    printf("Sending to %s:%d\n", ip, port);
-
     msg = "Hello peer!";
     char* res = "Received a message!";
 
-    for (int i = 0; i < 15; i++) {
+    for (int i = 0; i < 10; i++) {
+        printf("Sending one packet to %s:%d\n", ip, port);
         if (sendto(sockfd, msg, strlen(msg), 0, (struct sockaddr*)&addr, addr_len) == -1) {
             perror("sendto");
             return 1;
         }
+        sleep(1);
     }
 
     char buf[1024];
