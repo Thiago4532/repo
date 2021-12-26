@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
         s_port = argv[2];
 
     if (argc <= 3)
-        c_port = "0";
+        c_port = "12345";
     else
         c_port = argv[3];
 
@@ -64,11 +64,11 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // if (bind(sockfd, cliinfo->ai_addr, cliinfo->ai_addrlen) == -1) {
-    //     close(sockfd);
-    //     perror("server: bind");
-    //     return 1;
-    // }
+    if (bind(sockfd, cliinfo->ai_addr, cliinfo->ai_addrlen) == -1) {
+        close(sockfd);
+        perror("server: bind");
+        return 1;
+    }
 
     char *msg = "Hello Server!\n";
     if (sendto(sockfd, msg, strlen(msg), 0, servinfo->ai_addr, servinfo->ai_addrlen) == -1) {
