@@ -121,6 +121,7 @@ int main(int argc, char* argv[]) {
                 perror("sendto");
                 return 1;
             }
+            sleep(1);
         }
     }
 
